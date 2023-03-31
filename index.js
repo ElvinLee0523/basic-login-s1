@@ -6,7 +6,7 @@ let dbUsers = [
         email: "soo@utem.edu.my"
     },
     {
-        username: "Soo",
+        username: "Ali",
         password: "123",
         name: "Ali",
         email: "ali@utem.edu.my"
@@ -22,6 +22,7 @@ let dbUsers = [
 function login(username, password)
 {
     console.log("someone try to login with", username, password)
+
     let matched = dbUsers.find (element =>
         element.username == username
     )
@@ -43,9 +44,34 @@ function login(username, password)
         return "Username not found"
 
     }
-
 }
 
+function register(newusername,newpassword,newname,newemail)
+{
+    // TODO: Check if username exist
+    let matched = dbUsers.find (element =>
+        element.username == newusername)
+
+        if (matched)
+        {
+            return "Username has been used, cannot be register"
+        }
+        else
+        {
+            dbUsers.push(
+                {
+                    username : newusername,
+                    password : newpassword,
+                    name : newname,
+                    email : newemail
+                }
+            )
+
+        }
+}
+console.log(register("Ali", "0000", "fkekk", "fkekk@utem.edu.my"))
+
+//console.log(login("utem","0000"))
 //try to login
-console.log(login("Soo","password"))
+//console.log(login("Soo","password"))
 //login("Ali","123")
